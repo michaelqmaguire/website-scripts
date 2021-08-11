@@ -1,9 +1,10 @@
 data have;
-input id string :$100.;
+infile datalines delimiter = "|" truncover;
+input id string $100.;
 datalines;
-1 Gabapentin,Escitalopram,Fluoxetine
-2 Solotol Hydrochloride
-3 Hydrocodone,Neurontin,Topamax,Carbamazepine
+1|Gabapentin,Escitalopram,Fluoxetine
+2|Solotol Hydrochloride
+3|Hydrocodone,Neurontin,Topamax,Carbamazepine
 ;
 
 data want;
