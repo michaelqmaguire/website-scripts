@@ -136,12 +136,13 @@ proc sql;
 					scan(compress(code_range,("'")), -1, "-") as end,
 					ccs_label as label,
 					"$cpt_fmt" as fmtname,
-					"c" as type
+					"c" as type,
+					"" as hlo
 		from
 					have_ccs;
 
 	insert into		have_fmt_sql
-		values		("", "", "Missing", "$cpt_fmt", "c");
+		values		("", "", "Missing", "$cpt_fmt", "c", "O");
 
 quit; 
 
@@ -176,12 +177,6 @@ proc freq
 	data = have_pt;
 		tables cpt2 / plots = freqplot;
 	format cpt2 $cpt_fmt.;
-run;
-
-proc freq
-	data = have_pt;
-		tables cpt1-cpt10 / plots = freqplot;
-	format cpt1-cpt10 $cpt_fmt.;
 run;
 
 proc transpose
