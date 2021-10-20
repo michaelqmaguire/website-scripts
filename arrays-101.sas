@@ -122,6 +122,7 @@ data work.patients_array_mult_dx;
 		diabetes_flag = 0;
 	do i = 1 to dim(_icd);
 		if _icd[i] in ("E08311", "E088") then diabetes_flag = 1;
+		leave;
 	end;
 	drop i;
 run;
