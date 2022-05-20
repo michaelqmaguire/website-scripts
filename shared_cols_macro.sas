@@ -107,7 +107,7 @@ proc sql noprint;
 quit;
 
 /* If no variables match, send warning to log and exit the macro */
-%if %eval(&sc.) = 0 %then %do;
+%if &sc. = 0 %then %do;
 	%put WARNING: %upcase(%scan(&tables., 1, |)) and %upcase(%scan(&tables., -1, |)) did not share any columns.;
 	%return;
 %end;
